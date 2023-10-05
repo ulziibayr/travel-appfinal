@@ -1,33 +1,43 @@
 "use client";
-
-import App from "@/app/components/table/page";
-import axios from "axios"; //huselt ywuuldag san
-import { useEffect, useState } from "react";  //ene huudas neegdeh uyd ajilldag event 
-
+import App from "../../components/table/category"
+import axios from "axios";
+import { useEffect, useState } from "react";
 const columns = [
-  { name: "Дугаар", uid: "id", sortable: true },
-  { name: "Овог", uid: "lastname", sortable: true },
-  { name: "Нэр", uid: "firstname", sortable: true },
-  { name: "Албан тушаал", uid: "position", sortable: true },
+  { name: "ID", uid: "categoryId", sortable: true },
+  { name: "Категорийн нэр", uid: "categoryName", sortable: true },
+  { name: "Үүсгэсэн", uid: "createdAt", sortable: true },
 ];
-
-
 const statusOptions = [
   { name: "Active", uid: "active" },
   { name: "Paused", uid: "paused" },
-  { name: "Vacation", uid: "vacation" },
 ];
 
 
 
-
-function employeesTable() {
-  const [employee, setEmployee] = useState([]);
+function CategoryTable() {
+  const [Category, setCategory] = useState([]);
   useEffect(() => {
-    axios.get("/server/api/category").then((res) => {setEmployee(res.data.employees)}).catch((err) => {console.log(err)});
-  }, [])
+    axios
+      .get("/server/api/category")
+      .then((res) => {
+        setCategory(res.data.categories);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      
+  }, []);
 
-  return <App tableName="Ажилтан" AddFieldName = "Ажилтан нэмэх" users={employee} columns={columns} statusOptions = {statusOptions}/>;
+
+  return (
+    <App
+      tableName="Кателоги"
+      AddFieldName="Кателоги нэмэх"
+      category={Category}
+      columns={columns}
+      statusOptions={statusOptions}
+    />
+  );
 }
 
-export default employeesTable;
+export default CategoryTable;

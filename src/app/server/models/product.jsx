@@ -1,4 +1,3 @@
-import { bool } from "sharp";
 
 const mongoose = require("mongoose");
 
@@ -21,18 +20,15 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: [true, "bairshil oruulna uu"],
     },
-    productOption: {
-        type: String,
-        required: [true, "zogsooltoi eseh oruulna uu"],
-    },
     productWifi: {
         type: String,
         required: [true, "product ner oruulna uu"],
     },
-    productAvailable: {
-        type: Boolean,
-        required: [true, "Book hiih bolomjtoi eseh"],
+    productImg: {
+        type: String,
+        required: [true, "product ner oruulna uu"],
     },
+   
     createdAt: {
         type: Date,
         default:Date.now

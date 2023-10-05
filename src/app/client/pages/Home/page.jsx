@@ -7,7 +7,7 @@ import CardComponent from "../../components/card/page";
 export default function HomeScreen() {
   return (
     <div>
-      <NavbarComponent />
+      
       {/* <ImagePage /> */}
       <CardComponent/>
      

@@ -1,18 +1,18 @@
 import { NextResponse } from "next/server";
 import connectDB from "../../config/db";
-import Category from "../../models/category";
+import product from "../../models/product";
 
 export async function POST(request) {
     const body = await request.json();
 
     console.log("request :", body);
     await connectDB();
-    await Product.create(body);
+    await product.create(body);
     return NextResponse.json({ product : body }, { status: 200 });
 }
 
 export async function GET() {
     await connectDB();
-    const product = await product.find();
-    return NextResponse.json({ product : product })
+    const Product = await product.find();
+    return NextResponse.json({ products : Product })
 }

@@ -14,5 +14,5 @@ export async function POST(request) {
 export async function GET() {
     await connectDB();
     const category = await Category.find();
-    return NextResponse.json({ category : category })
+    return NextResponse.json({ categories : category })
 }
